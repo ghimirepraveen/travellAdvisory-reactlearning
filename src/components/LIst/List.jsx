@@ -12,10 +12,23 @@ import {
 } from "@material-ui/core";
 import useStyles from "./styles";
 
+import PlaceDetails from "../Placedetails/PlaceHolder";
+
 const List = () => {
   const classes = useStyles();
   const { type, setType } = useState("restaurants");
   const { rating, setRating } = useState("");
+  const places = [
+    { name: "Cool Place" },
+    { name: "Best Beer" },
+    { name: "Best Steak" },
+    { name: "Cool Place" },
+    { name: "Best Beer" },
+    { name: "Best Steak" },
+    { name: "Cool Place" },
+    { name: "Best Beer" },
+    { name: "Best Steak" },
+  ];
 
   return (
     <div className="{classescontainer">
@@ -40,6 +53,12 @@ const List = () => {
         </Select>
       </FormControl>
       <Grid container spacing={3} className={classes.list}>
+        {places?.map((place, i) => (
+          <Grid item key={i} xs={12}>
+            <PlaceDetails place={place} />
+            <Typography variant="h5">{place.name}</Typography>
+          </Grid>
+        ))}
         <Grid item xs={12}>
           <Typography variant="h5">Best Hotels</Typography>
         </Grid>

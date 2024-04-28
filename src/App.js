@@ -1,10 +1,19 @@
 import "./App.css";
+import { useEffect, useState } from "react";
 import { CssBaseline, Grid } from "@material-ui/core";
 import Header from "./components/Headers/Header";
 import Map from "./components/Map/Map";
 import List from "./components/LIst/List";
+import getPlacesData from "./api";
 
 function App() {
+  const [place, setPlaces] = useState([]);
+  useEffect(() => {
+    getPlacesData("restaurants").then((data) => {
+      setPlaces(data);
+      console.log(data);
+    });
+  }, []);
   return (
     <div className="App">
       <CssBaseline />
