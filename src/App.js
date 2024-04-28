@@ -7,7 +7,6 @@ import List from "./components/LIst/List";
 function App() {
   return (
     <div className="App">
-      <h1>Hello</h1>
       <CssBaseline />
       <Header />
       <Grid container spacing={3} style={{ width: "100%" }}>
