@@ -4,7 +4,7 @@ import { CssBaseline, Grid } from "@material-ui/core";
 import Header from "./components/Headers/Header";
 import Map from "./components/Map/Map";
 import List from "./components/LIst/List";
-import getPlacesData from "./api";
+import { getPlacesData } from "./api";
 
 function App() {
   const [place, setPlaces] = useState([]);
@@ -17,8 +17,12 @@ function App() {
       }
     );
   }, []);
+
   useEffect(() => {
-    getPlacesData().then((data) => {
+    console.log(coordinates, bounds);
+
+    getPlacesData(bounds.sw, bounds.ne).then((data) => {
+      console.log(data);
       setPlaces(data);
     });
   }, [coordinates, bounds]);
