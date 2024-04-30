@@ -10,14 +10,18 @@ function App() {
   const [place, setPlaces] = useState([]);
   const [coordinates, setCoordinates] = useState({});
   const [bounds, setBounds] = useState(null);
-
   useEffect(() => {
-    console.log(`coordinates, bounds`);
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCoordinates({ lat: latitude, lng: longitude });
+      }
+    );
+  }, []);
+  useEffect(() => {
     getPlacesData().then((data) => {
       setPlaces(data);
-      console.log(data);
     });
-  }, []);
+  }, [coordinates, bounds]);
   return (
     <div className="App">
       <CssBaseline />

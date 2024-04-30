@@ -26,7 +26,7 @@ const getPlacesData = async (type, sw, ne) => {
     const {
       data: { data },
     } = await axios.get(url, options);
-    console.log(data);
+
     return data;
   } catch (error) {
     console.log(error);
