@@ -20,8 +20,12 @@ function App() {
 
   useEffect(() => {
     console.log(coordinates, bounds);
+    console.log("coordinates", coordinates);
 
-    getPlacesData(bounds.sw, bounds.ne).then((data) => {
+    // const sw = bounds.sw;
+    // const ne = bounds.ne;
+
+    getPlacesData().then((data) => {
       console.log(data);
       setPlaces(data);
     });
