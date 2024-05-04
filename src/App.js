@@ -8,8 +8,9 @@ import { getPlacesData } from "./api";
 
 function App() {
   const [place, setPlaces] = useState([]);
+
   const [coordinates, setCoordinates] = useState({});
-  const [bounds, setBounds] = useState(null);
+  const [bounds, setBounds] = useState({});
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
@@ -17,15 +18,9 @@ function App() {
       }
     );
   }, []);
-
   useEffect(() => {
     console.log(coordinates, bounds);
-    console.log("coordinates", coordinates);
-
-    // const sw = bounds.sw;
-    // const ne = bounds.ne;
-
-    getPlacesData().then((data) => {
+    getPlacesData(bounds.sw, bounds.ne).then((data) => {
       console.log(data);
       setPlaces(data);
     });
